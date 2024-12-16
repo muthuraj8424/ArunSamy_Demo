@@ -1,6 +1,5 @@
 const express = require('express');
 const http = require('http');
-const path = require('path');
 const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
@@ -16,6 +15,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
   credentials: true, // Allow credentials (cookies, authorization headers)
   preflightContinue: false, // Pass preflight request to the next middleware
+  allowedHeaders: ['Content-Type', 'Authorization'] // Ensure headers like 'Authorization' are allowed
 };
 
 // Apply CORS middleware globally
