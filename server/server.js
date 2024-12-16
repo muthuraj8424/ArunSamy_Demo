@@ -10,30 +10,27 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 
-// Allowed Origins
-const allowedOrigins = ['http://localhost:3000', 'http://arunsamy-demo.onrender.com'];
-
-// CORS Options
+// Define CORS Options
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
+  origin: ['https://arunsamy-demo.onrender.com', 'http://localhost:3000'], // Your allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
+  credentials: true, // Allow credentials (cookies, authorization headers)
+  preflightContinue: false, // Pass preflight request to the next middleware
 };
 
-// Middleware
-app.use(express.json());
+// Apply CORS middleware globally
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Preflight handling for all routes
+
+// Handle preflight requests for all routes
+app.options('*', cors(corsOptions)); 
+
+// Middleware to parse JSON
+app.use(express.json());
 
 // Socket.IO Setup
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: corsOptions.origin,
     methods: ['GET', 'POST'],
     credentials: true,
   },
