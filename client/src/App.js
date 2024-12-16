@@ -351,8 +351,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import './App.css';
 
-const API_BASE_URL =  'http://localhost:5000';
-const SOCKET_URL =  'http://localhost:5000';
+const API_BASE_URL =  'https://demo-backend-q4cp.onrender.com';
+const SOCKET_URL =  'https://demo-backend-q4cp.onrender.com';
 const socket = io(SOCKET_URL, {
   transports: ['websocket'],
 });
