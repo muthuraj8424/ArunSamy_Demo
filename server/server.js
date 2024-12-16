@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const port = process.env.PORT || 5000
 const io = new Server(server, {
   cors: {
-    origin: 'http://arunsamy-demo.onrender.com/',
+  origin: ['http://localhost:3000', 'https://arunsamy-demo.onrender.com'],
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -23,11 +23,12 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://arunsamy-demo.onrender.com/',
+  origin: ['http://localhost:3000', 'https://arunsamy-demo.onrender.com'],
     credentials: true,
   })
 );
 
+app.options('*', cors(corsOptions)); // Handle preflight
 
 
 // MongoDB Schema Definitions
