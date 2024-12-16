@@ -11,7 +11,7 @@ const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 
 // Allowed Origins
-const allowedOrigins = ['http://localhost:3000', 'https://arunsamy-demo.onrender.com'];
+const allowedOrigins = ['http://localhost:3000', 'http://arunsamy-demo.onrender.com'];
 
 // CORS Options
 const corsOptions = {
