@@ -1,287 +1,315 @@
 /* General Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-  }
-  
-  .app-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .app-header {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #007bff;
-  }
-  
-  /* Authentication Section */
-  .auth-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-  }
-  
-  .auth-section input {
-    margin: 10px;
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .auth-button {
-    margin: 10px;
-    padding: 8px 16px; /* Smaller padding */
-    width: 60%; /* Button width smaller than input */
-    max-width: 200px; /* Ensure a maximum width */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .auth-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Room Section */
-  .room-section input {
-    margin: 10px;
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .join-room {
-    margin: 10px;
-    padding: 8px 16px; /* Smaller padding */
-    width: 60%; /* Button width smaller than input */
-    max-width: 200px; /* Ensure a maximum width */
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .join-room:hover {
-    background-color: #1e7e34;
-  }
-  
-  /* Call Button */
-  .call-button,
-  .end-call-button {
-    margin: 10px;
-    padding: 8px 16px; /* Smaller padding */
-    width: 60%; /* Button width smaller than input */
-    max-width: 200px; /* Ensure a maximum width */
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .call-button:hover {
-    background-color: #c82333;
-  }
-  
-  .end-call-button:hover {
-    background-color: #bd2130;
-  }
-  
-  /* Users Section */
-  .users-section {
-    margin: 20px;
-  }
-  
-  .load-users {
-    margin: 10px;
-    padding: 8px 16px; /* Smaller padding */
-    width: 60%; /* Button width smaller than input */
-    max-width: 200px; /* Ensure a maximum width */
-    background-color: #17a2b8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .load-users:hover {
-    background-color: #117a8b;
-  }
-  
-  .send-request {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #6c757d; /* Changed from yellow to a neutral color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .send-request:hover {
-    background-color: #5a6268;
-  }
-  
-  /* Video Duration */
-  .video-duration {
-    text-align: center;
-    margin: 10px;
-    font-size: 18px;
-    color: #555;
-  }
-  
-  /* Video Container */
-  .video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    height: 100%;
-    padding: 10px;
-    position: relative;
-  }
-  
-  video {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-  }
-  
-  .local-video {
-    width: 25%;
-    height: auto;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .remote-video {
-    width: 70%;
-    height: auto;
-    border: 3px solid #007bff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Responsive Design */
-  @media screen and (max-width: 768px) {
-    .auth-section input,
-    .room-section input {
-      width: 90%;
-    }
-  
-    .auth-button,
-    .join-room,
-    .call-button,
-    .end-call-button,
-    .load-users,
-    .send-request {
-      width: 80%; /* Adjust button width to be smaller than input */
-      font-size: 16px;
-    }
-  
-    .video-container {
-      flex-direction: column;
-    }
-  
-    .local-video {
-      width: 40%;
-      bottom: 10px;
-      right: 10px;
-    }
-  
-    .remote-video {
-      width: 80%;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .auth-section input,
-    .room-section input {
-      width: 80%;
-    }
-  
-    .auth-button,
-    .join-room,
-    .call-button,
-    .end-call-button,
-    .load-users,
-    .send-request {
-      width: 20%; /* Adjust button width to be smaller than input */
-      font-size: 14px;
-    }
-  
-    .video-container {
-      flex-direction: column;
-    }
-  
-    .local-video {
-      width: 50%;
-      bottom: 10px;
-      right: 10px;
-    }
-  
-    .remote-video {
-      width: 90%;
-    }
-  }
-  /* User Card Styles */
-.user-card {
-  display: inline-block;
-  width: 250px;
-  margin: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%; /* Ensure full width */
+  background-color: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  background-image: url('../public/vc.jpeg'); /* Beautiful tech background */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fix background for parallax effect */
+  animation: backgroundAnim 30s infinite alternate;
+  position: relative; /* Allow overlay layering */
+}
+
+.app-header {
+  position: absolute; /* Position it at the top */
+  top: 20px; /* Adjust spacing from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Correct alignment after centering */
+  font-size: 36px;
+  color: #0b0108af;
   text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+  z-index: 10; /* Ensure it stays above other elements */
 }
 
-.user-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+.auth-section, .logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for visibility */
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards, scaleUp 1s ease-out forwards; /* Combined animations */
 }
 
-.user-card h3 {
-  font-size: 18px;
-  color: #333;
-  margin: 5px 0;
-}
-
-.user-card p {
-  font-size: 14px;
-  color: #666;
-  margin: 5px 0;
-}
-
-.user-card button {
-  padding: 8px 12px;
-  font-size: 14px;
+.auth-button, .room-button, .send-request {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
   background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-button:hover, .room-button:hover, .send-request:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px); /* Hover effect for buttons */
+}
+
+.auth-button:active, .room-button:active, .send-request:active {
+  animation: buttonClick 0.2s ease-in-out;
+}
+
+.search-input, .auth-input, .room-input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* User Card Styles */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.user-item {
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideUp 1s ease-out forwards;
+  backdrop-filter: blur(10px); /* Adds a blurred effect for better contrast */
+}
+
+.user-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.user-item span {
+  font-size: 16px;
+  color: #2c2c2c; /* Darker shade of black */
+}
+
+.send-request {
+  padding: 10px 18px;
+  background-color: #d1336f76; /* Light pinkish background */
+  border-radius: 5px;
+  color: rgba(10, 11, 16, 0.829);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-request:hover {
+  background-color: #f09cb8; /* Slightly darker pink on hover */
+}
+
+.send-request:active {
+  background-color: #eb7899; /* Even darker pink on active */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes backgroundAnim {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logout Button Styles */
+.logout-button {
+  position: absolute; /* Positioning it absolutely relative to the container */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  padding: 10px 18px;
+  background-color: #3365d176; /* Light pinkish background */
+  color: rgba(10, 11, 16, 0.829);
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.logout-button:hover {
+  background-color: #f09cb8; /* Slightly darker pink on hover */
+  transform: translateY(-3px); /* Hover effect */
+}
+
+.logout-button:active {
+  background-color: #8f78eb; /* Even darker pink on active */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu {
+  display: none; /* Hidden by default */
+}
+
+.dropdown-menu.show {
+  display: block; /* Show when activated */
+}
+
+/* Call Section Styling */
+.call-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.local-video,
+.remote-video {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  margin: 10px;
+  max-width: 100%; /* Ensure responsiveness */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.local-video:hover,
+.remote-video:hover {
+  transform: scale(1.05); /* Add a hover effect */
+}
+
+.call-end-button {
+  padding: 10px 20px;
+  margin-top: 15px;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.user-card button:hover {
-  background-color: #0056b3;
+.call-end-button:hover {
+  background-color: #cc0000;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .app-header {
+    font-size: 28px; /* Smaller font size for mobile */
+  }
+  .app-container {
+    flex-direction: column; /* Stack items vertically */
+    height: auto; /* Allow height to adjust dynamically */
+    padding: 20px;
+  }
+
+  .user-list {
+    flex-direction: column;
+    gap: 10px; /* Reduce gap between items */
+  }
+
+  .user-item {
+    width: 90%; /* Take most of the screen width */
+  }
+
+  .app-header {
+    font-size: 24px; /* Smaller font size */
+  }
 }
