@@ -22,6 +22,7 @@ const App = () => {
   const [remoteStream, setRemoteStream] = useState(null);
   const [callInProgress, setCallInProgress] = useState(false);
   const [callDuration, setCallDuration] = useState('00:00');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const timerInterval = useRef(null);
   const localVideoRef = useRef(null);
@@ -34,9 +35,18 @@ const App = () => {
     window.speechSynthesis.speak(utterance);
   };
 
+    useEffect(() => {
+    // Check if user is already logged in on page load (via localStorage)
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId); // Set userId from local storage
+    }
+  }, []);
+
    useEffect(() => {
     if (!userId) {
       const instructions = [
+        "Welcome to Prison App.",
         "This page is for logging in.",
         "First, enter your email address.",
         "Next, enter your password.",
@@ -135,6 +145,9 @@ const App = () => {
       setUserId(data.userId);
       alert('Login successful');
        speak("You have successfully logged into your account.");
+
+      // Store the userId in localStorage
+      localStorage.setItem("userId", data.userId);
       
       // Instructions for entering Room ID and starting a call
       const instructions = [
@@ -151,6 +164,13 @@ const App = () => {
       alert(error.message);
       console.error('Login failed:', error.message);
     }
+  };
+
+  
+  const handleLogout = () => {
+    setUserId(null);
+    localStorage.removeItem("userId"); // Clear userId from localStorage
+    alert("You have logged out");
   };
 
   const handleSearch = (e) => {
@@ -313,9 +333,13 @@ const App = () => {
     }
   };
 
+    const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
-    <div className="app-container">
-      <h1 className="app-header">Video Call App</h1>
+     <div className="app-container">
+      <h1 className="app-header">Prison App</h1>
 
       {!userId ? (
         <div className="auth-section">
@@ -333,64 +357,182 @@ const App = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="auth-button" onClick={handleSignup}>
-            Sign Up
-          </button>
           <button className="auth-button" onClick={handleLogin}>
             Login
           </button>
+          <button className="auth-button" onClick={handleSignup}>
+            Signup
+          </button>
         </div>
       ) : (
-        <p>Welcome, {email}</p>
-      )}
+        <div className="logged-in">
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
 
-      {userId && (
-        <div className="users-section">
-          <input
-            type="text"
-            className="search-box"
-            placeholder="Search Users"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-          <div className="user-cards-container">
+          <div className="search-bar">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search users"
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+
+          <div className="user-list">
             {filteredUsers.map((user) => (
-              <div key={user._id} className="user-card">
-                <h3>{user.email}</h3>
-                <button onClick={() => sendRequest(user._id)}>Send Request</button>
+              <div key={user._id} className="user-item">
+                <span>{user.email}</span>
+                <button
+                  className="send-request"
+                  onClick={() => sendRequest(user._id)}
+                >
+                  Send Request
+                </button>
               </div>
             ))}
           </div>
+
+          <div className="room-section">
+            <input
+              type="text"
+              className="room-input"
+              placeholder="Enter Room ID"
+              value={roomId}
+              onChange={(e) => setRoomId(e.target.value)}
+            />
+            <button className="room-button" onClick={joinRoom}>
+              Join Room
+            </button>
+
+            {callInProgress && (
+              <div className="call-section">
+                <video
+                  autoPlay
+                  muted
+                  width="400"
+                  className="local-video"
+                  ref={localVideoRef}
+                />
+                <video
+                  autoPlay
+                  width="400"
+                  className="remote-video"
+                  ref={remoteVideoRef}
+                />
+                <p>Call Duration: {callDuration}</p>
+                <button className="call-end-button" onClick={endCall}>
+                  End Call
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="dropdown-container">
+            <button className="dropdown-button" onClick={toggleDropdown}>
+              Contact
+            </button>
+            {dropdownOpen && (
+              <div className="dropdown-menu">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+                <a href="mailto:example@example.com">Email</a>
+              </div>
+            )}
+          </div>
         </div>
       )}
-
-      <div className="room-section">
-        <input
-          type="text"
-          className="room-input"
-          placeholder="Room ID"
-          value={roomId}
-          onChange={(e) => setRoomId(e.target.value)}
-        />
-        <button className="join-room" onClick={joinRoom}>
-          Join Room
-        </button>
-      </div>
-
-      {callInProgress && <div className="call-timer">Call Duration: {callDuration}</div>}
-
-      <button
-        className={callInProgress ? 'end-call-button' : 'call-button'}
-        onClick={callInProgress ? endCall : startCall}
-      >
-        {callInProgress ? 'End Call' : 'Start Call'}
-      </button>
-
-      <div className="video-container">
-        {localStream && <video ref={localVideoRef} className="local-video" autoPlay playsInline muted />}
-        {remoteStream && <video ref={remoteVideoRef} className="remote-video" autoPlay playsInline />}
-      </div>
     </div>
+  //   <div className="app-container">
+  //     <h1 className="app-header">Video Call App</h1>
+
+  //     {!userId ? (
+  //       <div className="auth-section">
+  //         <input
+  //           type="email"
+  //           className="auth-input"
+  //           placeholder="Email"
+  //           value={email}
+  //           onChange={(e) => setEmail(e.target.value)}
+  //         />
+  //         <input
+  //           type="password"
+  //           className="auth-input"
+  //           placeholder="Password"
+  //           value={password}
+  //           onChange={(e) => setPassword(e.target.value)}
+  //         />
+  //         <button className="auth-button" onClick={handleSignup}>
+  //           Sign Up
+  //         </button>
+  //         <button className="auth-button" onClick={handleLogin}>
+  //           Login
+  //         </button>
+  //       </div>
+  //     ) : (
+  //       <p>Welcome, {email}</p>
+  //     )}
+
+  //     {userId && (
+  //       <div className="users-section">
+  //         <input
+  //           type="text"
+  //           className="search-box"
+  //           placeholder="Search Users"
+  //           value={searchQuery}
+  //           onChange={handleSearch}
+  //         />
+  //         <div className="user-cards-container">
+  //           {filteredUsers.map((user) => (
+  //             <div key={user._id} className="user-card">
+  //               <h3>{user.email}</h3>
+  //               <button onClick={() => sendRequest(user._id)}>Send Request</button>
+  //             </div>
+  //           ))}
+  //         </div>
+  //       </div>
+  //     )}
+
+  //     <div className="room-section">
+  //       <input
+  //         type="text"
+  //         className="room-input"
+  //         placeholder="Room ID"
+  //         value={roomId}
+  //         onChange={(e) => setRoomId(e.target.value)}
+  //       />
+  //       <button className="join-room" onClick={joinRoom}>
+  //         Join Room
+  //       </button>
+  //     </div>
+
+  //     {callInProgress && <div className="call-timer">Call Duration: {callDuration}</div>}
+
+  //     <button
+  //       className={callInProgress ? 'end-call-button' : 'call-button'}
+  //       onClick={callInProgress ? endCall : startCall}
+  //     >
+  //       {callInProgress ? 'End Call' : 'Start Call'}
+  //     </button>
+
+  //     <div className="video-container">
+  //       {localStream && <video ref={localVideoRef} className="local-video" autoPlay playsInline muted />}
+  //       {remoteStream && <video ref={remoteVideoRef} className="remote-video" autoPlay playsInline />}
+  //     </div>
+  //   </div>
   );
 };
 
