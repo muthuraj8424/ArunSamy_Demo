@@ -35,8 +35,7 @@ const App = () => {
     window.speechSynthesis.speak(utterance);
   };
 
-  speak("வணக்கம்!");
-
+ 
     useEffect(() => {
     // Check if user is already logged in on page load (via localStorage)
     const storedUserId = localStorage.getItem("userId");
@@ -48,6 +47,7 @@ const App = () => {
    useEffect(() => {
     if (!userId) {
       const instructions = [
+        "வணக்கம்!",
       "இந்த பக்கம் உள்நுழைவதற்கானது.", // This page is for logging in
         "முதலில், உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடுங்கள்.", // First, enter your email address
         "அடுத்து, உங்கள் கடவுச்சொல்லை உள்ளிடுங்கள்.", // Next, enter your password
