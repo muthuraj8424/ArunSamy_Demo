@@ -31,7 +31,7 @@ const App = () => {
     // Voice automation implementation
   const speak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US"; // Change to "en-US" for English
+    utterance.lang = "ta-IN"; // Change to "en-US" for English
     window.speechSynthesis.speak(utterance);
   };
 
