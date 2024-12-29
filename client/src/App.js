@@ -35,6 +35,8 @@ const App = () => {
     window.speechSynthesis.speak(utterance);
   };
 
+  speak("வணக்கம்!");
+
     useEffect(() => {
     // Check if user is already logged in on page load (via localStorage)
     const storedUserId = localStorage.getItem("userId");
@@ -46,11 +48,10 @@ const App = () => {
    useEffect(() => {
     if (!userId) {
       const instructions = [
-        "Welcome to Prison App.",
-        "This page is for logging in.",
-        "First, enter your email address.",
-        "Next, enter your password.",
-        "Finally, press the login button."
+      "இந்த பக்கம் உள்நுழைவதற்கானது.", // This page is for logging in
+        "முதலில், உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடுங்கள்.", // First, enter your email address
+        "அடுத்து, உங்கள் கடவுச்சொல்லை உள்ளிடுங்கள்.", // Next, enter your password
+        "இறுதியாக, உள்நுழைவு பொத்தானை அழுத்தவும்.", // Finally, press the login button
       ];
       let delay = 0;
       instructions.forEach((instruction) => {
@@ -59,9 +60,9 @@ const App = () => {
       });
     } else {
       const instructions = [
-        "You have successfully logged in.",
-        "Please enter the Room ID to proceed.",
-        "Then, start the video call."
+         "நீங்கள் வெற்றிகரமாக உள்நுழைந்துவிட்டீர்கள்.", // You have successfully logged in
+        "தயவுசெய்து தொடர Room ID ஐ உள்ளிடுங்கள்.", // Please enter the Room ID to proceed
+        "பிறகு, வீடியோ அழைப்பை தொடங்கவும்.", // Then, start the video call
       ];
       let delay = 0;
       instructions.forEach((instruction) => {
@@ -151,9 +152,9 @@ const App = () => {
       
       // Instructions for entering Room ID and starting a call
       const instructions = [
-        "Now, please enter the Room ID to proceed.",
-        "After entering the Room ID, press the Join Room button.",
-        "Finally, press Start Call to begin the video call."
+ "தயவுசெய்து Room ID ஐ உள்ளிடுங்கள்.", // Now, please enter the Room ID to proceed
+        "Room ID ஐ உள்ளிட்ட பின், Join Room பொத்தானை அழுத்தவும்.", // After entering the Room ID, press the Join Room button
+        "இறுதியாக, Start Call பொத்தானை அழுத்தி வீடியோ அழைப்பை தொடங்கவும்.", // Finally, press Start Call to begin the video call
       ];
       let delay = 0;
       instructions.forEach((instruction) => {
@@ -208,12 +209,14 @@ const App = () => {
   const joinRoom = () => {
     if (!roomId) {
       alert('No room ID provided.');
-      speak("Room ID not entered. Please enter a valid Room ID.");
+       speak("Room ID வழங்கப்படவில்லை. சரியான Room ID ஐ உள்ளிடுங்கள்."); // Room ID not entered. Please enter a valid Room ID
       return;
     }
     socket.emit('join-room', roomId);
     alert(`Joined room: ${roomId}`);
-    speak("You have successfully joined the room. Now, press Start Call to begin.");
+     speak(
+      "நீங்கள் வெற்றிகரமாக Room ஐ இணைத்துவிட்டீர்கள். இப்போது, Start Call பொத்தானை அழுத்தவும்." // Successfully joined room
+    );
     startCall();
   };
 
