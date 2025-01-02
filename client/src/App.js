@@ -384,7 +384,7 @@ const App = () => {
             {filteredUsers.map((user) => (
               <div key={user._id} className="user-item">
                 <img
-                  src="https://i.pinimg.com/originals/5e/ce/5e/5ece5ea780565cbf9251757a69543f60.jpg"
+                  src="/shanks.jpg"
                   alt="Profile"
                   className="user-profile-pic"
                 />
