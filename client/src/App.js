@@ -380,7 +380,7 @@ const App = () => {
             />
           </div>
 
-            <div className="user-list">
+          <div className="user-list">
             {filteredUsers.map((user) => (
               <div key={user._id} className="user-item">
                 <img
@@ -397,6 +397,7 @@ const App = () => {
                 </button>
               </div>
             ))}
+          </div>
           </div>
 
           // <div className="user-list">
