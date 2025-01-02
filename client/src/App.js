@@ -380,25 +380,24 @@ const App = () => {
             />
           </div>
 
-          <div className="user-list">
-            {filteredUsers.map((user) => (
-              <div key={user._id} className="user-item">
-                <img
-                  src="/shanks.jpg"
-                  alt="Profile"
-                  className="user-profile-pic"
-                />
-                <span className="user-email">{user.email}</span>
-                <button
-                  className="send-request"
-                  onClick={() => sendRequest(user._id)}
-                >
-                  Send Request
-                </button>
-              </div>
-            ))}
-          </div>
-          </div>
+         <div className="user-list">
+  {filteredUsers.map((user) => (
+    <div key={user._id} className="user-item">
+      <img
+        src="https://th.bing.com/th?id=OIP.UsZlf9XFRdGvyPCxhSaXXwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+        alt="Profile"
+        className="user-profile-pic"
+      />
+      <span className="user-email">{user.email}</span>
+      <button
+        className="send-request"
+        onClick={() => sendRequest(user._id)}
+      >
+        Send Request
+      </button>
+    </div>
+  ))}
+</div>
 
           // <div className="user-list">
           //   {filteredUsers.map((user) => (
