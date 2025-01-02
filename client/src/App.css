@@ -69,7 +69,6 @@
   animation: fadeInUp 1.5s ease-out;
 }
 
-
 .user-list {
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +120,7 @@
 }
 
 .send-request:hover {
-  background-color: #f09cb8; /* Slightly darker pink on hover */
+  background-color: #0056b3;
 }
 
 .send-request:active {
@@ -215,52 +214,6 @@
   background-color: #8f78eb; /* Even darker pink on active */
 }
 
-/* Dropdown Menu Styles */
-.dropdown-container {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  width: 150px;
-  border-radius: 5px;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown-menu a:hover {
-  background-color: #f0f0f0;
-}
-
-.dropdown-menu {
-  display: none; /* Hidden by default */
-}
-
-.dropdown-menu.show {
-  display: block; /* Show when activated */
-}
-
 /* Call Section Styling */
 .call-section {
   display: flex;
@@ -299,27 +252,67 @@
   background-color: #cc0000;
 }
 
-/* Responsive Design for Mobile */
+/* Responsive Design for Tablets and Mobile Devices */
 @media (max-width: 768px) {
-  .app-header {
-    font-size: 28px; /* Smaller font size for mobile */
-  }
   .app-container {
     flex-direction: column; /* Stack items vertically */
-    height: auto; /* Allow height to adjust dynamically */
-    padding: 20px;
+    height: auto; /* Allow flexible height */
+    padding: 20px; /* Reduce padding for smaller screens */
+  }
+
+  .app-header {
+    font-size: 24px; /* Smaller font size for headers */
+  }
+
+  .auth-input,
+  .search-input,
+  .room-input {
+    width: 100%; /* Take full width on smaller screens */
   }
 
   .user-list {
-    flex-direction: column;
-    gap: 10px; /* Reduce gap between items */
+    flex-direction: column; /* Stack user cards vertically */
+    gap: 10px; /* Reduce gap for compact layout */
   }
 
   .user-item {
-    width: 90%; /* Take most of the screen width */
+    width: 100%; /* Take full width on mobile */
+    max-width: 300px; /* Limit maximum width for consistency */
   }
 
+  .user-profile-pic {
+    width: 80px; /* Smaller profile picture */
+    height: 80px;
+  }
+
+  .user-email {
+    font-size: 14px; /* Smaller font size for text */
+  }
+
+  .send-request {
+    font-size: 14px; /* Adjust button text size */
+    padding: 8px 16px; /* Compact button dimensions */
+  }
+
+  .logout-button {
+    top: 10px; /* Reduce distance from top */
+    right: 10px; /* Adjust distance from right */
+    padding: 8px 14px; /* Smaller button size */
+  }
+}
+
+/* Responsive Design for Extra Small Screens */
+@media (max-width: 480px) {
   .app-header {
-    font-size: 24px; /* Smaller font size */
+    font-size: 20px; /* Smaller header for extra small screens */
+  }
+
+  .user-item {
+    padding: 10px; /* Reduce padding for compact layout */
+  }
+
+  .send-request {
+    padding: 6px 12px; /* Compact button for small screens */
+    font-size: 12px; /* Smaller text size for buttons */
   }
 }
