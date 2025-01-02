@@ -69,45 +69,55 @@
   animation: fadeInUp 1.5s ease-out;
 }
 
-/* User Card Styles */
+
 .user-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .user-item {
-  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: slideUp 1s ease-out forwards;
-  backdrop-filter: blur(10px); /* Adds a blurred effect for better contrast */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .user-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
 }
 
-.user-item span {
-  font-size: 16px;
-  color: #2c2c2c; /* Darker shade of black */
+.user-profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.user-email {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .send-request {
-  padding: 10px 18px;
-  background-color: #d1336f76; /* Light pinkish background */
-  border-radius: 5px;
-  color: rgba(10, 11, 16, 0.829);
-  font-size: 14px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 14px;
 }
 
 .send-request:hover {
