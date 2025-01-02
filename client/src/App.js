@@ -336,9 +336,6 @@ const App = () => {
     }
   };
 
-    const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
 
   return (
      <div className="app-container">
@@ -383,10 +380,15 @@ const App = () => {
             />
           </div>
 
-          <div className="user-list">
+            <div className="user-list">
             {filteredUsers.map((user) => (
               <div key={user._id} className="user-item">
-                <span>{user.email}</span>
+                <img
+                  src="https://i.pinimg.com/originals/5e/ce/5e/5ece5ea780565cbf9251757a69543f60.jpg"
+                  alt="Profile"
+                  className="user-profile-pic"
+                />
+                <span className="user-email">{user.email}</span>
                 <button
                   className="send-request"
                   onClick={() => sendRequest(user._id)}
@@ -396,6 +398,20 @@ const App = () => {
               </div>
             ))}
           </div>
+
+          // <div className="user-list">
+          //   {filteredUsers.map((user) => (
+          //     <div key={user._id} className="user-item">
+          //       <span>{user.email}</span>
+          //       <button
+          //         className="send-request"
+          //         onClick={() => sendRequest(user._id)}
+          //       >
+          //         Send Request
+          //       </button>
+          //     </div>
+          //   ))}
+          // </div>
 
           <div className="room-section">
             <input
